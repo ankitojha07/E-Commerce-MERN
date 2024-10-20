@@ -1,8 +1,8 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
-import authRoute from "./src/routes/router";
-import cartRouter from "./src/routes/cartRouter";
-import { authMiddleware } from "./src/middleware/authMiddleware";
+import authRoute from "./routes/router";
+import cartRouter from "./routes/cartRouter";
+import { authMiddleware } from "./middleware/authMiddleware";
 
 const app: Application = express();
 

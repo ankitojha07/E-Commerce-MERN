@@ -12,7 +12,7 @@ export const registerUser = async (req: Request, res: Response) => {
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      res.status(400).json({
+      return res.status(400).json({
         message: "Can not create duplicate user!",
         next: "verify-otp",
       });
@@ -30,7 +30,7 @@ export const registerUser = async (req: Request, res: Response) => {
     if (!isOtpSent) {
       console.log("1");
 
-      res.status(500).json({
+      return res.status(500).json({
         message: "Failed to send OTP. User not registered.",
       });
     }
@@ -56,11 +56,11 @@ export const registerUser = async (req: Request, res: Response) => {
       }
     );
 
-    res
+    return res
       .status(200)
       .json({ message: "OTP sent to email.", token, next: "verify-otp" });
   } catch (error) {
-    res.status(400).json({ message: "Server error" });
+    return res.status(400).json({ message: "Server error" });
   }
 };
 

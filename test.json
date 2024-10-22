@@ -1,0 +1,307 @@
+{
+  "VFS GSO": {
+    "India": {
+      "stages": [
+        {
+          "stageName": "with_date",
+          "tag": "GSO Visa Letter with date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        },
+        {
+          "stageName": "without_date",
+          "tag": "GSO Visa Letter without date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        }
+      ]
+    }
+  },
+
+  "VFS South Asia": {
+    "Sri Lanka": {
+      "stages": [
+        {
+          "stageName": "without_date",
+          "tag": "Biomet Srilanka VISA Letter without date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        },
+        {
+          "stageName": "with_date",
+          "tag": "Biomet Srilanka VISA Letter with date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        }
+      ]
+    },
+    "Nepal": {
+      "stages": [
+        {
+          "stageName": "with_date",
+          "tag": "Nepal VISA Letter with date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        },
+        {
+          "stageName": "without_date",
+          "tag": "Nepal VISA Letter without date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        }
+      ]
+    },
+    "South Asia": {
+      "stages": [
+        {
+          "stageName": "with_date",
+          "tag": "South Asia Visa Letter with date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        },
+        {
+          "stageName": "without_date",
+          "tag": "South Asia Visa Letter without date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        }
+      ]
+    },
+    "VFS International": {
+      "stages": [
+        {
+          "stageName": "with_date",
+          "tag": "VFS International VISA Letter with date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        },
+        {
+          "stageName": "without_date",
+          "tag": "VFS International VISA Letter without date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        }
+      ]
+    },
+    "VFS Srilanka": {
+      "stages": [
+        {
+          "stageName": "with_date",
+          "tag": "VFS Srilanka VISA Letter with date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        },
+        {
+          "stageName": "without_date",
+          "tag": "VFS Srilanka VISA Letter without date",
+          "info": {
+            "user": {
+              "displayName": "{{nodes.FetchEmployee.executionData.data.displayName}}",
+              "employeeId": "{{nodes.FetchEmployee.executionData.data.employeeId}}",
+              "doj": "{{nodes.basicDetails.executionData.data.doj}}",
+              "designation": "{{nodes.FetchEmployee.executionData.data.profile.designation}}",
+              "companyName": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "department": "{{nodes.FetchEmployee.executionData.data.profile.companyName}}",
+              "country": "{{nodes.FetchEmployee.executionData.data.profile.country}}",
+              "currentDate": "{{nodes.basicDetails.executionData.data.currentDate}}",
+              "genderSalutation1": "{{nodes.basicDetails.executionData.data.genderSalutation1}}",
+              "genderSalutation2": "{{nodes.basicDetails.executionData.data.genderSalutation2}}",
+              "purpose": "{{forms.Visa Letter Generation.Purpose.value}}",
+              "fromDate": "{{forms.Visa Letter Generation.fromDate}}",
+              "toDate": "{{forms.Visa Letter Generation.toDate}}"
+            }
+          },
+          "filename": "Bonafide Letter_{{nodes.Fetch Employee Details.executionData.data.employeeId}}.pdf",
+          "prefixPath": "visaLetter"
+        }
+      ]
+    }
+  }
+}

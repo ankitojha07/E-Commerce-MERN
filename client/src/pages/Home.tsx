@@ -34,10 +34,28 @@ const HomePage: React.FC = () => {
     };
     fetchProducts();
   }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
   return (
-    <div className="">
-      <h1>Home Page</h1>
-      <p>Welcome to the homepage!</p>
+    <div className="flex gap-12 flex-wrap flex-col md:flex-row justify-stretch">
+      {products.map((product) => (
+        <div className="flex flex-row gap-2 p-2 rounded-lg w-3/12 ">
+          <div>
+            <img src="" alt="product" className="w-20 border p-2" />
+          </div>
+          <div className="flex flex-col gap-2">
+            <h1 className="font-bold text-lg">{product.name}</h1>
+            <p className="font-light">{product.description}</p>
+            <p className="font-semibold">INR {product.price}.00</p>
+            <p className="font-light text-xs">ID:{product._id}</p>
+            <button className="bg-[#ccc] px-3 py-2 w-40 font-semibold">
+              Add to cart
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

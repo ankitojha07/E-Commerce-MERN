@@ -26,7 +26,7 @@ const ResetPassword: React.FC = () => {
     };
     e.preventDefault();
     axios
-      .put("http://localhost:5000/auth/forget-password", formData, { headers })
+      .put("/auth/forget-password", formData, { headers })
       .then((response) => {
         setSuccess(response.data);
         setError(null);
@@ -43,7 +43,7 @@ const ResetPassword: React.FC = () => {
   const sentOtp = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/auth/resend-otp", formData)
+      .post("/auth/resend-otp", formData)
       .then((response) => {
         setError(null);
         setSuccess(response.data);

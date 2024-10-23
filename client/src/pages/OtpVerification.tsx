@@ -19,7 +19,7 @@ const VerifyOtp: React.FC = () => {
     e.preventDefault();
     console.log("Form Submitted", formData);
     axios
-      .post("http://localhost:5000/auth/verifyotp", formData)
+      .post("/auth/verifyotp", formData)
       .then((response) => {
         setError(null);
         navigate("/home");

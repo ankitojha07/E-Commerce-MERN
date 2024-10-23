@@ -21,7 +21,7 @@ const Login: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/auth/login", formData)
+      .post("/auth/login", formData)
       .then((response) => {
         setError(null);
         localStorage.setItem("jwt", response.data.token);

@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "main": "server.ts",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev ./index.ts"
+    "dev": "ts-node-dev ./index.ts",
+    "start": "node dist/app.js"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",

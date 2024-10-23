@@ -42,8 +42,8 @@ const userSchema: Schema = new mongoose.Schema(
       required: false,
     },
     cart: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Cart",
+      type: Schema.Types.ObjectId,
+      ref: "Product",
     },
   },
   {

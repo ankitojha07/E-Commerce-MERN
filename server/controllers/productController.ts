@@ -38,3 +38,7 @@ export const fetchProducts = (req: Request, res: Response) => {
       });
   } catch (error) {}
 };
+
+export const addToCart = (req: Request, res: Response) => {
+  return res.send("products");
+};

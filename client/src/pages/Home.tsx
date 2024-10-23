@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("/auth/all-products");
+        const response = await axios.get("auth/all-products");
         const fetchedProducts = response.data.products.map((product: any) => ({
           ...product,
           quantity: 0,

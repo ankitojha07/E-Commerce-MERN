@@ -23,7 +23,7 @@ const SignUp: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post("/auth/register", formData)
+      .post("auth/register", formData)
       .then((response) => {
         setSuccess("Registration successful!");
         setError(null);

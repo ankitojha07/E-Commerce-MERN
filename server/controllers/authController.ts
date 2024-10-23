@@ -14,7 +14,7 @@ export const registerUser = async (req: Request, res: Response) => {
     if (existingUser) {
       return res.status(400).json({
         message: "Can not create duplicate user!",
-        next: "signup",
+        next: "home",
       });
     }
 

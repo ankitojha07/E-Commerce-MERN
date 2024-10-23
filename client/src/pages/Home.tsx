@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
     return <div>{error}</div>;
   }
   return (
-    <div className="flex gap-12 flex-wrap flex-col md:flex-row justify-stretch">
+    <div className="flex gap-12 flex-wrap flex-col md:flex-row justify-between">
       {products.map((product) => (
         <div className="flex flex-row gap-2 p-2 rounded-lg w-3/12 ">
           <div>

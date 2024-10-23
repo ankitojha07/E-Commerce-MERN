@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://e-commerce-ankit.vercel.app/", // Frontend URL
+    origin: "*", // Frontend URL
     credentials: true, // Allow cookies (only if needed)
   })
 );

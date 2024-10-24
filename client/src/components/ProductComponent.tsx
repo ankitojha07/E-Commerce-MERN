@@ -19,7 +19,7 @@ const Product: React.FC<ProductProps> = ({
   description,
   colors = "Not specified",
   seller,
-  image,
+  image = `https://images.pexels.com/photos/707837/pexels-photo-707837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`,
   oldPrice,
   newPrice,
   updateQuantity,
@@ -57,7 +57,7 @@ const Product: React.FC<ProductProps> = ({
   };
 
   return (
-    <div className="border border-[#ccc] rounded-md p-2 w-full">
+    <div className="border border-[#ccc] rounded-md p-2 w-full flex justify-center items-center">
       <div className="flex w-full flex-col md:flex-row gap-4">
         <img
           src={image}

@@ -17,7 +17,7 @@ const PriceDetails: React.FC<PriceDetailsProps> = ({ totalPrice }) => {
   };
 
   return (
-    <div className="border border-[#ccc] rounded-md p-2 w-full md:w-6/12 lg:w-4/12 flex flex-col gap-2 max-h-64">
+    <div className="border border-[#ccc] rounded-md p-2 w-full md:w-5/12 lg:w-4/12 flex flex-col gap-2 max-h-64 md:fixed md:mr-1 right-0">
       <h1 className="text-[#aaa] font-semibold uppercase">Price Details</h1>
       <div className="h-[1px] bg-[#aaa]"></div>
       <div className="flex flex-row justify-between text-sm font-medium">

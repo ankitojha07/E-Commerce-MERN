@@ -7,7 +7,8 @@ export const addProduct = (req: Request, res: Response) => {
     name: name,
     description: description,
     price: price,
-    // image: "https://example.com/product.jpg",
+    image:
+      "https://images.pexels.com/photos/707837/pexels-photo-707837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     seller: seller,
     numberInStock: numberInStock,
   });

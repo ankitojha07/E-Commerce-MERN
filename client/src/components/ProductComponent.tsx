@@ -57,59 +57,52 @@ const Product: React.FC<ProductProps> = ({
   };
 
   return (
-    <div className="border border-[#ccc] rounded-md p-2 w-full flex justify-center items-center">
-      <div className="flex w-full flex-col md:flex-row gap-4">
-        <img
-          src={image}
-          alt={name}
-          className="border rounded-md w-32 h-32 object-cover"
-        />
-        <div className="flex flex-col justify-between w-full">
-          <div className="product-info flex flex-col justify-around gap-1">
-            <p className="font-bold text-lg">{name}</p>
-            <p className="text-xs font-medium">{description}</p>
-            <p className="text-xs font-light">Color: {colors}</p>
-            <p className="text-xs font-light">Seller: {seller}</p>
-            <div className="flex flex-row gap-2">
-              <del className="text-xs font-light">₹{oldPrice.toFixed(2)}</del>
-              <p className="text-xs font-bold" id="newPrice">
-                ₹{newPrice.toFixed(2)}
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col w-[112px] sm:flex-row gap-4 mt-2 items-center">
-            <div className="flex flex-row gap-2 items-center">
-              <button
-                className="bg-[#aaa] text-white px-3 py-1 text-sm font-semibold"
-                onClick={removeProduct}
-              >
-                -
-              </button>
-              <input
-                name="quantitu"
-                type="number"
-                className="w-8 text-xs text-center text-[#000] font-bold"
-                max={availQuantity}
-                min="0"
-                value={productQuantity}
-                onChange={handleQuantityChange}
-              />
-              <button
-                className="bg-[#aaa] text-white px-3 py-1 text-sm font-semibold"
-                onClick={addProduct}
-              >
-                +
-              </button>
-            </div>
-            <button
-              className="bg-[#aaa] text-white px-3 py-1 text-sm font-semibold"
-              onClick={removeItem}
-            >
-              Remove
-            </button>
-          </div>
+    <div className="border border-[#ccc] rounded-md p-4 w- grid grid-cols-1 sm:grid-cols-2 gap-2 bg-white items-center justify-center">
+      <img
+        src="https://via.placeholder.com/150"
+        alt={name}
+        className="w-36 h-36 object-contain rounded-md"
+      />
+
+      <div className="product-info space-y-1">
+        <p className="font-bold text-lg">{name}</p>
+        <p className="text-sm font-medium text-gray-600">{description}</p>
+        <p className="text-sm text-gray-500">Color: {colors}</p>
+        <p className="text-sm text-gray-500">Seller: {seller}</p>
+        <div className="flex items-center space-x-2">
+          <del className="text-sm text-gray-400">₹{oldPrice.toFixed(2)}</del>
+          <p className="text-sm font-bold text-black">₹{newPrice.toFixed(2)}</p>
         </div>
       </div>
+      <div className="flex items-center space-x-2">
+        <button
+          className="bg-gray-300 text-gray-700 px-3 py-1 text-sm font-semibold rounded-md"
+          onClick={removeProduct}
+        >
+          -
+        </button>
+        <input
+          name="quantity"
+          type="number"
+          className="w-10 text-center text-sm border border-gray-300 rounded-md"
+          max={availQuantity}
+          min="0"
+          value={productQuantity}
+          onChange={handleQuantityChange}
+        />
+        <button
+          className="bg-gray-300 text-gray-700 px-3 py-1 text-sm font-semibold rounded-md"
+          onClick={addProduct}
+        >
+          +
+        </button>
+      </div>
+      <button
+        className="bg-[#aaa] text-white px-4 py-1 w-36 md:w-full text-sm font-semibold rounded-md"
+        onClick={removeItem}
+      >
+        Remove
+      </button>
     </div>
   );
 };

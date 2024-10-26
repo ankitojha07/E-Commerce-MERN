@@ -40,7 +40,7 @@ const ProductSchema = new mongoose.Schema({
   seller: { type: String, required: true },
   price: { type: Number, required: true },
   numberInStock: { type: Number, required: true },
-  productImage: { type: Array, required: true, default: [] },
+  image: { type: String, required: true },
   creationDate: { type: Date, default: Date.now },
 });
 

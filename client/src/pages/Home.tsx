@@ -6,7 +6,7 @@ interface ProductData {
   name: string;
   description: string;
   seller: string;
-  productImage: string;
+  image: string;
   price: number;
   numberInStock: number;
   quantity: number;
@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("auth/all-products");
+        const response = await axios.get("/product/all-products");
         const fetchedProducts = response.data.products.map((product: any) => ({
           ...product,
           quantity: 0,
@@ -45,17 +45,20 @@ const HomePage: React.FC = () => {
           {products.map((product) => (
             <div
               key={product._id}
-              className="flex flex-col items-center gap-4 p-4 bg-slate-100 rounded-lg shadow-lg hover:shadow-2xl transition-shadow w-full"
+              className="flex flex-col items-start gap-4 p-4 bg-slate-100 rounded-lg shadow-lg hover:shadow-2xl transition-shadow"
             >
               <img
-                // src={product.productImage || "https://via.placeholder.com/150"}
-                src="https://via.placeholder.com/150"
+                src={product.image}
                 alt="product"
                 className="w-full max-w-52 border"
               />
-              <div className="text-center">
+              <div className="text-start">
                 <h1 className="font-bold text-lg">{product.name}</h1>
-                <p className="font-light">{product.description}</p>
+                <p className="font-light">
+                  {product.description.length > 20
+                    ? `${product.description.substring(0, 30)}`
+                    : `${product.description}...`}
+                </p>
                 <p className="font-semibold">INR {product.price}.00</p>
                 <p className="font-light text-xs">ID: {product._id}</p>
               </div>

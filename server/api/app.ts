@@ -21,6 +21,6 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/auth", authRoute);
-app.use("/protected", authMiddleware, cartRouter);
+app.use("/product", cartRouter);
 
 export default app;

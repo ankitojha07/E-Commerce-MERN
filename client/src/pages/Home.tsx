@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
   }, []);
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="mt-10">{error}</div>;
   }
   return (
     <>
@@ -69,7 +69,7 @@ const HomePage: React.FC = () => {
           ))}
         </div>
       ) : (
-        <div>Loading Products ...</div>
+        <div className="mt-10">Loading Products ...</div>
       )}
     </>
   );

@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <div className="fixed top-0 left-0 right-0 bg-[#aaa] z-50 px-4 md:px-12">
           <Navbar />
         </div>
-        <div className="mt-10">
+        <div className="mt-20">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />

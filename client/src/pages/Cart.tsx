@@ -66,7 +66,7 @@ const CartPage: React.FC = () => {
   return (
     <>
       {loader ? (
-        <div className="h-full mt-3 mb-10">
+        <div className="h-full mb-10">
           <h1 className="text-2xl font-bold">Product Cart Page</h1>
           <div className="flex flex-col md:flex-row justify-between mt-3 gap-2">
             {/* Left side - Products */}
@@ -92,7 +92,7 @@ const CartPage: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div>Loading Products...</div>
+        <div className="mt-10">Loading Products...</div>
       )}
     </>
   );

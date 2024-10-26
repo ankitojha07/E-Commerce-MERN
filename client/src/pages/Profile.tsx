@@ -20,6 +20,7 @@ const Profile: React.FC = () => {
   const [profileData, setProfileData] = useState<ProfileData | null>(null);
   const [logInStatus, setLogInStatus] = useState<Boolean>(false);
   const [logOutStatus, setLogOutStatus] = useState<Boolean>(true);
+  const [loader, setLoader] = useState<Boolean>(false);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -41,14 +42,17 @@ const Profile: React.FC = () => {
       if (!token) return;
 
       try {
+        setLoader(true);
         const response = await axios.get("/profile/userProfile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         setProfileData(response.data);
+        setLoader(false);
       } catch (error) {
         console.error("Error fetching profile data:", error);
+        setLoader(false);
       }
     };
 
@@ -58,6 +62,8 @@ const Profile: React.FC = () => {
   return (
     <div className="h-screen flex justify-center items-center">
       <div>
+        {loader && <div>Loading profile data...</div>}
+
         {logOutStatus && (
           <div className="flex flex-col gap-3 justify-center items-center text-xl font-thin">
             <p>To view your profile, you have to log in first.</p>

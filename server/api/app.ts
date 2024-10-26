@@ -2,7 +2,6 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import authRoute from "../routes/router";
 import cartRouter from "../routes/cartRouter";
-import { authMiddleware } from "../middleware/authMiddleware";
 import profileRouter from "../routes/profileRouter";
 
 const app: Application = express();

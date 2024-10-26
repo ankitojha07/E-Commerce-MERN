@@ -25,4 +25,5 @@ app.use("/auth", authRoute);
 app.use("/product", cartRouter);
 app.use("/profile", profileRouter);
 
+
 export default app;

@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-interface ProfleData {
+interface ProfileData {
   _id: string;
   name: string;
   email: string;
-  image: string;
+  image?: string;
 }
 
 const Profile: React.FC = () => {
@@ -17,16 +17,17 @@ const Profile: React.FC = () => {
     navigate("/", { replace: true });
   };
 
-  const [profileData, setProfileData] = useState<ProfleData[]>([]);
-  const [logInStatus, setLogInStatus] = useState<Boolean | null>(false);
-  const [logOutStatus, setLogOutStatus] = useState<Boolean | null>(true);
-
-  const token = localStorage.getItem("jwtToken");
+  const [profileData, setProfileData] = useState<ProfileData | null>(null);
+  const [logInStatus, setLogInStatus] = useState<Boolean>(false);
+  const [logOutStatus, setLogOutStatus] = useState<Boolean>(true);
 
   useEffect(() => {
-    const checkLogin = async () => {
-      const isLogIn = localStorage.getItem("jwt");
-      if (isLogIn) {
+    const token = localStorage.getItem("jwt");
+    console.log(token);
+
+    // Check if the user is logged in
+    const checkLogin = () => {
+      if (token) {
         setLogInStatus(true);
         setLogOutStatus(false);
       } else {
@@ -36,23 +37,36 @@ const Profile: React.FC = () => {
     };
     checkLogin();
 
+    // Fetch profile data if logged in
     const fetchProfileData = async () => {
-      const response = await axios.get("/profile/userProfile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response.data);
+      if (!token) return; // Avoid fetching if there's no token
+
+      try {
+        const response = await axios.get("/profile/userProfile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        // Log the API response
+        console.log("API response:", response.data);
+
+        // Update state with profile data
+        setProfileData(response.data);
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
     };
+
     fetchProfileData();
   }, []);
 
   return (
-    <div className="h-screen flex  justify-center items-center">
+    <div className="h-screen flex justify-center items-center">
       <div>
         {logOutStatus && (
           <div className="flex flex-col gap-3 justify-center items-center text-xl font-thin">
-            <p>To view your profile, You hav to login first.</p>
+            <p>To view your profile, you have to log in first.</p>
             <div className="flex flex-row gap-3">
               <Link to="/login" className="bg-gray-400 px-3 py-2 rounded-lg">
                 Login
@@ -63,15 +77,20 @@ const Profile: React.FC = () => {
             </div>
           </div>
         )}
-        {logInStatus && (
-          <div>
-            <button
-              onClick={handleLogout}
-              className="bg-gray-400 px-3 py-2 rounded-lg"
-            >
-              Log Out
-            </button>
-            <h1>Logged In</h1>
+        {logInStatus && profileData && (
+          <div className="flex p-4 flex-col gap-4 border border-black rounded-lg">
+            <h1>Profile Card</h1>
+            <p>Hello, {profileData.name}</p>
+            <p>Email: {profileData.email}</p>
+            {profileData.image && <img src={profileData.image} alt="Profile" />}
+            <div>
+              <button
+                onClick={handleLogout}
+                className="bg-gray-400 px-3 py-1 rounded-lg"
+              >
+                Log Out
+              </button>
+            </div>
           </div>
         )}
       </div>

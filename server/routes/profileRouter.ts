@@ -4,8 +4,12 @@ import { authMiddleware } from "../middleware/authMiddleware";
 
 const profileRouter = Router();
 
-profileRouter.get("/userProfile", (req: Request, res: Response) => {
-  fetchUserProfile(req, res);
-});
+profileRouter.get(
+  "/userProfile",
+  authMiddleware,
+  (req: Request, res: Response) => {
+    fetchUserProfile(req, res);
+  }
+);
 
 export default profileRouter;

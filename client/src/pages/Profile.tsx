@@ -23,7 +23,6 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
-    console.log(token);
 
     // Check if the user is logged in
     const checkLogin = () => {
@@ -39,7 +38,7 @@ const Profile: React.FC = () => {
 
     // Fetch profile data if logged in
     const fetchProfileData = async () => {
-      if (!token) return; // Avoid fetching if there's no token
+      if (!token) return;
 
       try {
         const response = await axios.get("/profile/userProfile", {
@@ -47,11 +46,6 @@ const Profile: React.FC = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-
-        // Log the API response
-        console.log("API response:", response.data);
-
-        // Update state with profile data
         setProfileData(response.data);
       } catch (error) {
         console.error("Error fetching profile data:", error);

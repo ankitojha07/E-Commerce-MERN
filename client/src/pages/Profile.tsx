@@ -1,5 +1,13 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+interface ProfleData {
+  _id: string;
+  name: string;
+  email: string;
+  image: string;
+}
 
 const Profile: React.FC = () => {
   const navigate = useNavigate();
@@ -8,18 +16,35 @@ const Profile: React.FC = () => {
     localStorage.removeItem("jwt");
     navigate("/", { replace: true });
   };
+
+  const [profileData, setProfileData] = useState<ProfleData[]>([]);
   const [logInStatus, setLogInStatus] = useState<Boolean | null>(false);
   const [logOutStatus, setLogOutStatus] = useState<Boolean | null>(true);
 
+  const token = localStorage.getItem("jwtToken");
+
   useEffect(() => {
-    const isLogIn = localStorage.getItem("jwt");
-    if (isLogIn) {
-      setLogInStatus(true);
-      setLogOutStatus(false);
-    } else {
-      setLogInStatus(false);
-      setLogOutStatus(true);
-    }
+    const checkLogin = async () => {
+      const isLogIn = localStorage.getItem("jwt");
+      if (isLogIn) {
+        setLogInStatus(true);
+        setLogOutStatus(false);
+      } else {
+        setLogInStatus(false);
+        setLogOutStatus(true);
+      }
+    };
+    checkLogin();
+
+    const fetchProfileData = async () => {
+      const response = await axios.get("/profile/userProfile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+    };
+    fetchProfileData();
   }, []);
 
   return (

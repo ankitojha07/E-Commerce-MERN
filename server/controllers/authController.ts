@@ -48,6 +48,7 @@ export const registerUser = async (req: Request, res: Response) => {
     await user.save();
 
     console.log("User saved to database:", user);
+    
     const token = jwt.sign(
       { email: user.email, userId: user._id },
       `${process.env.JWT_SECRET as string}`,

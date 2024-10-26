@@ -10,7 +10,6 @@ export const authMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  // Ensure it returns void
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {

@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
         setProducts(fetchedProducts);
         setLoader(true);
       } catch (err) {
-        console.error(err); // Log the error for debugging
+        console.error(err);
         setError("Failed to fetch products");
       }
     };

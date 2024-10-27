@@ -17,13 +17,13 @@ const Navbar: React.FC = () => {
       </Link>
       <nav className=" flex w-1/3 text-md md:text-lg mt-2 justify-end">
         <ul className="hidden md:flex justify-between gap-4 w-full">
-          <li className="hover:font-bold hover:text-[#000]">
+          <li className=" hover:text-[#fff]">
             <Link to="/">Home</Link>
           </li>
-          <li className="hover:font-bold hover:text-[#000]">
+          <li className=" hover:text-[#fff]">
             <Link to="/cart">My Cart</Link>
           </li>
-          <li className="hover:font-bold hover:text-[#000]">
+          <li className=" hover:text-[#fff]">
             <Link to="/profile">Profile</Link>
           </li>
         </ul>

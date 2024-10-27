@@ -24,7 +24,7 @@ const App: React.FC = () => {
         <div className="fixed top-0 left-0 right-0 bg-[#aaa] z-50 px-4 md:px-12">
           <Navbar />
         </div>
-        <div className="flex-grow mt-20 px-4 md:px-12">
+        <div className="flex-grow mt-16 px-4 md:px-12">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />

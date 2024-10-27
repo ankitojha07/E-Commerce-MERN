@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       {loader ? (
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4">
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {products.map((product) => (
             <div
               key={product._id}
@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
               <img
                 src={product.image}
                 alt="product"
-                className="w-full max-w-52 border"
+                className="w-52 h-40 border"
               />
               <div className="text-start">
                 <h1 className="font-bold text-lg">{product.name}</h1>

@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <footer className="bg-[#aaa] text-black py-6">
       <div className="container mx-auto text-center">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} Your Website Name. All rights
+          &copy; {new Date().getFullYear()} E-Commerce-Test. All rights
           reserved.
         </p>
         <div className="flex justify-center space-x-4 mt-4">

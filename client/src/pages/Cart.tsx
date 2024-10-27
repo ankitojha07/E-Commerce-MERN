@@ -8,7 +8,7 @@ interface ProductData {
   name: string;
   description: string;
   seller: string;
-  productImage: string;
+  image: string;
   price: number;
   numberInStock: number;
   quantity: number;
@@ -30,9 +30,8 @@ const CartPage: React.FC = () => {
         }));
         setProducts(fetchedProducts);
         setLoader(true);
-        console.log("test");
       } catch (err) {
-        console.error(err); // Log the error for debugging
+        console.error(err);
         setError("Failed to fetch products");
       }
     };
@@ -63,13 +62,16 @@ const CartPage: React.FC = () => {
     return <div>{error}</div>;
   }
 
+  products.map(async (m) => {
+    console.log(await m.image);
+  });
+
   return (
     <>
       {loader ? (
         <div className="h-full mb-10">
           <h1 className="text-2xl font-bold">Product Cart Page</h1>
           <div className="flex flex-col md:flex-row justify-between mt-3 gap-2">
-            {/* Left side - Products */}
             <div className="md:w-6/12 lg:w-8/12 w-full flex flex-col gap-2">
               {products.map((product) => (
                 <Product
@@ -78,7 +80,7 @@ const CartPage: React.FC = () => {
                   name={product.name}
                   description={product.description}
                   seller={product.seller}
-                  image={product.productImage}
+                  image={product.image}
                   oldPrice={product.price * 1.2}
                   newPrice={product.price}
                   availQuantity={product.numberInStock}

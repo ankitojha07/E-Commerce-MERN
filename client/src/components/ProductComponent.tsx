@@ -17,14 +17,15 @@ const Product: React.FC<ProductProps> = ({
   id,
   name,
   description,
-  colors = "Not specified",
+  colors,
   seller,
-  image = `https://images.pexels.com/photos/707837/pexels-photo-707837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`,
+  image,
   oldPrice,
   newPrice,
   updateQuantity,
   availQuantity,
 }) => {
+  console.log("Image URL:", image);
   const [productQuantity, setProductQuantity] = useState<number>(0);
 
   const removeProduct = () => {
@@ -59,7 +60,7 @@ const Product: React.FC<ProductProps> = ({
   return (
     <div className="border border-[#ccc] rounded-md p-4 w- grid grid-cols-1 sm:grid-cols-2 gap-2 bg-white items-center justify-center">
       <img
-        src="https://via.placeholder.com/150"
+        src={image}
         alt={name}
         className="w-36 h-36 object-contain rounded-md"
       />

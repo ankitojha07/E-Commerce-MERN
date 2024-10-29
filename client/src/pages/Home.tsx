@@ -35,6 +35,36 @@ const HomePage: React.FC = () => {
     fetchProducts();
   }, []);
 
+  const addProductToCart = async (productId: string) => {
+    try {
+      const jwt = localStorage.getItem("jwt");
+
+      if (!jwt) {
+        setError("User not authenticated");
+        return;
+      }
+
+      const data = {
+        pId: productId,
+      };
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      };
+
+      const response = await axios.post("/product/add", data, config);
+      console.log(response.data);
+    } catch (error: any) {
+      console.error(
+        "Error adding product to cart:",
+        error.response?.data || error.message
+      );
+      setError("Failed to add product to cart");
+    }
+  };
+
   if (error) {
     return <div className="mt-10">{error}</div>;
   }
@@ -62,7 +92,10 @@ const HomePage: React.FC = () => {
                 <p className="font-semibold">INR {product.price}.00</p>
                 <p className="font-light text-xs">ID: {product._id}</p>
               </div>
-              <button className="bg-[#ccc] px-3 py-2 font-semibold rounded-md">
+              <button
+                onClick={() => addProductToCart(product._id)}
+                className="bg-[#ccc] px-3 py-2 font-semibold rounded-md"
+              >
                 Add to cart
               </button>
             </div>

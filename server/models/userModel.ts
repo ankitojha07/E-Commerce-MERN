@@ -41,10 +41,12 @@ const userSchema: Schema = new mongoose.Schema(
       type: Date,
       required: false,
     },
-    cart: {
-      type: Schema.Types.ObjectId,
-      ref: "Cart",
-    },
+    cart: [
+      {
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+        quantity: { type: Number, default: 1 },
+      },
+    ],
   },
   {
     timestamps: true,

@@ -1,7 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import User from "../models/userModel";
+import User, { Iuser } from "../models/userModel";
 
-export const fetchUserProfile = async (req: Request, res: Response) => {
+interface ProfileRequest extends Request {
+  user?: Iuser;
+  email?: Iuser;
+}
+
+export const fetchUserProfile = async (req: ProfileRequest, res: Response) => {
   if (!req.user) {
     return res.status(401).json({ message: "Unauthorized access" });
   }

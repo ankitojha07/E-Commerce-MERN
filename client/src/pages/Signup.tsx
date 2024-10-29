@@ -27,7 +27,7 @@ const SignUp: React.FC = () => {
       .then((response) => {
         setSuccess("Registration successful!");
         setError(null);
-        navigate(`${response.data.next}`);
+        navigate(`/${response.data.next}`);
         localStorage.setItem("jwt", response.data.token);
       })
       .catch((error) => {

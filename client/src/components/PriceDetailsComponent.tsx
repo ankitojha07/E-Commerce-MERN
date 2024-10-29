@@ -6,7 +6,7 @@ interface PriceDetailsProps {
 }
 
 const PriceDetails: React.FC<PriceDetailsProps> = ({ totalPrice }) => {
-  const discount = totalPrice > 300 ? 45.0 : 0; // Sample discount logic
+  const discount = totalPrice > 300 ? 45.0 : 0;
   const deliveryCharges = 50.0;
   const packagingFee = 15.0;
   const finalAmount = totalPrice - discount + deliveryCharges + packagingFee;

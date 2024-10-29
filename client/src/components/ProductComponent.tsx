@@ -25,7 +25,6 @@ const Product: React.FC<ProductProps> = ({
   updateQuantity,
   availQuantity,
 }) => {
-  console.log("Image URL:", image);
   const [productQuantity, setProductQuantity] = useState<number>(0);
 
   const removeProduct = () => {

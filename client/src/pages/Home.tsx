@@ -54,8 +54,8 @@ const HomePage: React.FC = () => {
         },
       };
 
-      const response = await axios.post("/product/add", data, config);
-      console.log(response.data);
+      await axios.post("/product/add", data, config);
+      // console.log(response.data);
     } catch (error: any) {
       console.error(
         "Error adding product to cart:",

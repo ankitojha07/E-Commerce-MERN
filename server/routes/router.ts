@@ -12,7 +12,7 @@ const router = Router();
 router.post("/register", (req: Request, res: Response) => {
   registerUser(req, res);
 });
-router.post("/verifyotp", (req: Request, res: Response) => {
+router.post("/verify-otp", (req: Request, res: Response) => {
   verifyEmailOtp(req, res);
 });
 

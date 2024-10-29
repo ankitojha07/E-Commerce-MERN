@@ -4,9 +4,12 @@ import { Request, Response } from "express";
 import "../controllers/cartController";
 import {
   addProduct,
-  addToCart,
   fetchProducts,
+  fetchUsersCart,
 } from "../controllers/productController";
+
+import { addToCart } from "../controllers/cartController";
+import { authMiddleware } from "../middleware/authMiddleware";
 
 const cartRouter = Router();
 
@@ -25,12 +28,16 @@ cartRouter.post("/addItems", (req: Request, res: Response) => {
   addProduct(req, res);
 });
 
-cartRouter.post("/add-to-cart", (req: Request, res: Response) => {
+cartRouter.post("/add", authMiddleware, (req: Request, res: Response) => {
   addToCart(req, res);
 });
 
 cartRouter.get("/all-products", (req: Request, res: Response) => {
   fetchProducts(req, res);
+});
+
+cartRouter.get("/cart", authMiddleware, (req: Request, res: Response) => {
+  fetchUsersCart(req, res);
 });
 
 export default cartRouter;

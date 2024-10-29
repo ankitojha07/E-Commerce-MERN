@@ -22,8 +22,20 @@ const CartPage: React.FC = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      const jwt = localStorage.getItem("jwt");
+
+      if (!jwt) {
+        setError("User not authenticated");
+        return;
+      }
       try {
-        const response = await axios.get("product/all-products");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        };
+
+        const response = await axios.get("/product/cart", config);
         const fetchedProducts = response.data.products.map((product: any) => ({
           ...product,
           quantity: 0,
@@ -61,10 +73,6 @@ const CartPage: React.FC = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
-  products.map(async (m) => {
-    console.log(await m.image);
-  });
 
   return (
     <>

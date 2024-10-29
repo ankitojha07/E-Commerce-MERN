@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
 import { Product } from "../models/cartModel";
+import User, { Iuser } from "../models/userModel";
+
+interface ProfileRequest extends Request {
+  user?: Iuser;
+}
 
 export const addProduct = (req: Request, res: Response) => {
   const { name, price, description, seller, numberInStock, image } = req.body;
@@ -41,6 +46,32 @@ export const fetchProducts = (req: Request, res: Response) => {
   } catch (error) {}
 };
 
-export const addToCart = (req: Request, res: Response) => {
-  return res.send("products");
+export const fetchUsersCart = async (req: ProfileRequest, res: Response) => {
+  if (!req.user) {
+    console.log(req.user);
+
+    return res.status(401).json({ message: "Unauthorized access" });
+  }
+
+  try {
+    const { id } = req.user;
+    const user = await User.findOne({ _id: id }).exec();
+
+    if (!user) {
+      return res.status(400).json({ message: "user not found", next: "home" });
+    }
+
+    if (!user || !Array.isArray(user.cart) || user.cart.length === 0) {
+      return [];
+    }
+
+    const productIds = user.cart.map((item) => item.productId);
+
+    const products = await Product.find({ _id: { $in: productIds } }).exec();
+
+    if (products.length === 0) {
+      return res.status(404).json({ message: "No products found in cart!" });
+    }
+    return res.status(200).json({ products });
+  } catch (error) {}
 };

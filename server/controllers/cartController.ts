@@ -1,7 +1,5 @@
-import e, { Request, Response } from "express";
-import Cart from "../models/cartModel";
+import { Request, Response } from "express";
 import User, { Iuser } from "../models/userModel";
-import Product from "../models/cartModel";
 import mongoose, { Types } from "mongoose";
 
 interface ProfileRequest extends Request {
@@ -21,7 +19,8 @@ export const addToCart = async (req: ProfileRequest, res: Response) => {
       res.status(400).json({ error: "Product ID is required" });
     }
 
-    const user = User.findById(id);
+    const user = await User.findById(id);
+    console.log(user?.toJSON());
 
     if (!user) {
       return res.status(400).json({ message: "user not found", next: "home" });
@@ -31,24 +30,39 @@ export const addToCart = async (req: ProfileRequest, res: Response) => {
       return res.status(400).send("Invalid product ID");
     }
 
-    const addProduct = await user.updateOne(
-      {
-        _id: id,
-      },
-      {
-        $push: {
-          cart: {
-            productId: new Types.ObjectId(pId),
-            quantity: 1,
-          },
-        },
-      }
+    const existingProductIndex = user.cart.findIndex(
+      (item: any) => item.productId._id.toString() === pId
     );
 
-    if (addProduct.modifiedCount > 0) {
-      return res.status(200).json({ message: "Added to cart", next: "home" });
+    if (existingProductIndex !== -1) {
+      user.cart[existingProductIndex].quantity += 1;
+
+      await user.save();
+
+      return res.status(200).json({
+        message: "Product quantity updated successfully",
+        next: "home",
+      });
     } else {
-      return res.status(400).json({ message: "Product already in cart" });
+      const addProduct = await user.updateOne(
+        {
+          _id: id,
+        },
+        {
+          $push: {
+            cart: {
+              productId: new Types.ObjectId(pId),
+              quantity: 1,
+            },
+          },
+        }
+      );
+
+      if (addProduct.modifiedCount > 0) {
+        return res.status(200).json({ message: "Added to cart", next: "home" });
+      } else {
+        return res.status(400).json({ message: "Product already in cart" });
+      }
     }
   } catch (error) {
     console.log(error);

@@ -7,7 +7,10 @@ export interface Iuser extends Document {
   otp?: string;
   otpExpiry?: Date;
   isVerified: Boolean;
-  cart: mongoose.Schema.Types.ObjectId;
+  cart: {
+    productId: mongoose.Schema.Types.ObjectId;
+    quantity: number;
+  }[];
 }
 
 const userSchema: Schema = new mongoose.Schema(
@@ -44,7 +47,7 @@ const userSchema: Schema = new mongoose.Schema(
     cart: [
       {
         productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
-        quantity: { type: Number, default: 1 },
+        quantity: { type: Number, required: true, default: 1 },
       },
     ],
   },

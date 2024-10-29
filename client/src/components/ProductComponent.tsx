@@ -11,6 +11,7 @@ interface ProductProps {
   newPrice: number;
   updateQuantity: (id: string, quantity: number) => void;
   availQuantity: number;
+  quantity: number;
 }
 
 const Product: React.FC<ProductProps> = ({
@@ -24,6 +25,7 @@ const Product: React.FC<ProductProps> = ({
   newPrice,
   updateQuantity,
   availQuantity,
+  quantity,
 }) => {
   const [productQuantity, setProductQuantity] = useState<number>(0);
 
@@ -87,7 +89,7 @@ const Product: React.FC<ProductProps> = ({
           className="w-10 text-center text-sm border border-gray-300 rounded-md"
           max={availQuantity}
           min="0"
-          value={productQuantity}
+          value={quantity}
           onChange={handleQuantityChange}
         />
         <button

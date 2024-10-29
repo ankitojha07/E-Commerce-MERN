@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Product } from "../models/cartModel";
 import User, { Iuser } from "../models/userModel";
+import mongoose from "mongoose";
 
 interface ProfileRequest extends Request {
   user?: Iuser;
@@ -48,8 +49,6 @@ export const fetchProducts = (req: Request, res: Response) => {
 
 export const fetchUsersCart = async (req: ProfileRequest, res: Response) => {
   if (!req.user) {
-    console.log(req.user);
-
     return res.status(401).json({ message: "Unauthorized access" });
   }
 
@@ -58,20 +57,39 @@ export const fetchUsersCart = async (req: ProfileRequest, res: Response) => {
     const user = await User.findOne({ _id: id }).exec();
 
     if (!user) {
-      return res.status(400).json({ message: "user not found", next: "home" });
+      return res.status(400).json({ message: "User not found", next: "home" });
     }
 
-    if (!user || !Array.isArray(user.cart) || user.cart.length === 0) {
-      return [];
+    if (!Array.isArray(user.cart) || user.cart.length === 0) {
+      return res.status(404).json({ message: "Cart is empty" });
     }
 
-    const productIds = user.cart.map((item) => item.productId);
+    const cartItems = user.cart.map((item) => ({
+      productId: item.productId,
+      quantity: item.quantity,
+    }));
 
+    const productIds = cartItems.map((item) => item.productId);
     const products = await Product.find({ _id: { $in: productIds } }).exec();
 
     if (products.length === 0) {
       return res.status(404).json({ message: "No products found in cart!" });
     }
-    return res.status(200).json({ products });
-  } catch (error) {}
+
+    const cartWithDetails = products.map((product) => {
+      const item = cartItems.find((cartItem) =>
+        new mongoose.Types.ObjectId(product.id).equals(product._id)
+      );
+      return {
+        product,
+        quantity: item ? item.quantity : 1,
+      };
+    });
+    // console.log(cartWithDetails);
+
+    return res.status(200).json({ cart: cartWithDetails });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
+  }
 };

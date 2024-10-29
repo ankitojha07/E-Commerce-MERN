@@ -7,9 +7,11 @@ interface PriceDetailsProps {
 
 const PriceDetails: React.FC<PriceDetailsProps> = ({ totalPrice }) => {
   const discount = totalPrice > 300 ? 45.0 : 0;
-  const deliveryCharges = 50.0;
-  const packagingFee = 15.0;
-  const finalAmount = totalPrice - discount + deliveryCharges + packagingFee;
+  const subTotal = totalPrice - discount;
+  const tax = subTotal * 0.18;
+  const deliveryCharges = totalPrice > 1000 ? 0.0 : 50;
+  const packagingFee = totalPrice > 0 ? 10.0 : 0;
+  const finalAmount = subTotal + tax + deliveryCharges + packagingFee;
 
   const navigate = useNavigate();
   const handleCheckout = () => {
@@ -17,7 +19,7 @@ const PriceDetails: React.FC<PriceDetailsProps> = ({ totalPrice }) => {
   };
 
   return (
-    <div className="border border-[#ccc] rounded-md p-2 w-full md:w-5/12 lg:w-4/12 flex flex-col gap-2 max-h-64 md:fixed md:mr-1 right-0">
+    <div className="border border-[#ccc] rounded-md p-2 w-full md:w-5/12 lg:w-4/12 flex flex-col gap-2 md:fixed md:mr-1 right-0">
       <h1 className="text-[#aaa] font-semibold uppercase">Price Details</h1>
       <div className="h-[1px] bg-[#aaa]"></div>
       <div className="flex flex-row justify-between text-sm font-medium">
@@ -26,7 +28,18 @@ const PriceDetails: React.FC<PriceDetailsProps> = ({ totalPrice }) => {
       </div>
       <div className="flex flex-row justify-between text-sm font-medium">
         <p>Discount</p>
-        <p>₹{discount.toFixed(2)}</p>
+        <p>- ₹{discount.toFixed(2)}</p>
+      </div>
+      <hr />
+      <div className="flex flex-row justify-between text-sm font-bold">
+        <p>Sub Total</p>
+        <p>₹{subTotal.toFixed(2)}</p>
+      </div>
+      <hr />
+
+      <div className="flex flex-row justify-between text-sm font-medium">
+        <p>Tax</p>
+        <p>₹{tax.toFixed(2)}</p>
       </div>
       <div className="flex flex-row justify-between text-sm font-medium">
         <p>Delivery Charges</p>
@@ -42,7 +55,7 @@ const PriceDetails: React.FC<PriceDetailsProps> = ({ totalPrice }) => {
       </div>
       <button
         type="submit"
-        className="bg-[#aaa] px-2 py-1 font-semibold text-[#fff] text-lg"
+        className="bg-[#aaa] px-2 py-1 font-semibold text-[#fff] text-lg rounded-lg"
         onClick={handleCheckout}
       >
         Checkout

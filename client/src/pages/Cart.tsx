@@ -28,18 +28,30 @@ const CartPage: React.FC = () => {
         setError("User not authenticated");
         return;
       }
+
       try {
         const config = {
           headers: {
             Authorization: `Bearer ${jwt}`,
           },
         };
-
         const response = await axios.get("/product/cart", config);
-        const fetchedProducts = response.data.products.map((product: any) => ({
-          ...product,
-          quantity: 0,
+        if (!response.data.cart || !Array.isArray(response.data.cart)) {
+          setError("No cart data found");
+          return;
+        }
+
+        const fetchedProducts = response.data.cart.map((cartItem: any) => ({
+          _id: cartItem.product._id,
+          name: cartItem.product.name,
+          description: cartItem.product.description,
+          seller: cartItem.product.seller,
+          image: cartItem.product.image,
+          price: cartItem.product.price,
+          numberInStock: cartItem.product.numberInStock,
+          quantity: cartItem.quantity,
         }));
+
         setProducts(fetchedProducts);
         setLoader(true);
       } catch (err) {
@@ -94,6 +106,7 @@ const CartPage: React.FC = () => {
                   availQuantity={product.numberInStock}
                   colors="test"
                   updateQuantity={updateQuantity}
+                  quantity={product.quantity}
                 />
               ))}
             </div>

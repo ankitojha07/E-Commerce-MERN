@@ -116,7 +116,9 @@ export const resendOtp = async (req: Request, res: Response) => {
     user.otpExpiry = otpExpiry;
     user.save();
 
-    return res.status(200).json("Resent OTP on your mail");
+    return res
+      .status(200)
+      .json({ message: "Resent OTP on your mail", next: "verify-otp" });
   } catch (error) {
     console.error("Error registering user", error);
     return res.status(400).json({ message: "Server error" });
@@ -154,10 +156,10 @@ export const userLogin = async (req: Request, res: Response) => {
       if (result) {
         const token = jwt.sign(
           { email: user.email, userId: user._id },
-          `${process.env.JWT_SECRET}`,
-          {
-            expiresIn: "1h",
-          }
+          `${process.env.JWT_SECRET}`
+          // {
+          //   expiresIn: "1h",
+          // }
         );
         res
           .status(200)

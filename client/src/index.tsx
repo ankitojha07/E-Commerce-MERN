@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import axios from "axios";
 
-// axios.defaults.baseURL = "https://e-commerce-mern-coral.vercel.app/";
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = "https://e-commerce-mern-coral.vercel.app/";
+// axios.defaults.baseURL = "http://localhost:5000/";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

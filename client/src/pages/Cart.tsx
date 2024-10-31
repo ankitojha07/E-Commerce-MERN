@@ -18,14 +18,14 @@ const CartPage: React.FC = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [error, setError] = useState<string>("");
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true); // Set loader to true initially
 
   useEffect(() => {
     const fetchProducts = async () => {
       const jwt = localStorage.getItem("jwt");
-
       if (!jwt) {
         setError("User not authenticated");
+        setLoader(false);
         return;
       }
 
@@ -35,9 +35,10 @@ const CartPage: React.FC = () => {
             Authorization: `Bearer ${jwt}`,
           },
         };
-        const response = await axios.get("/product/cart", config);
+        const response = await axios.get("product/cart", config);
         if (!response.data.cart || !Array.isArray(response.data.cart)) {
           setError("No cart data found");
+          setLoader(false);
           return;
         }
 
@@ -53,12 +54,14 @@ const CartPage: React.FC = () => {
         }));
 
         setProducts(fetchedProducts);
-        setLoader(true);
       } catch (err) {
         console.error(err);
         setError("Failed to fetch products");
+      } finally {
+        setLoader(false); // Stop the loader after data is fetched
       }
     };
+
     fetchProducts();
   }, []);
 
@@ -89,6 +92,8 @@ const CartPage: React.FC = () => {
   return (
     <>
       {loader ? (
+        <div className="mt-10">Loading Products...</div>
+      ) : (
         <div className="h-full mb-10">
           <h1 className="text-2xl font-bold">Product Cart Page</h1>
           <div className="flex flex-col md:flex-row justify-between mt-3 gap-2">
@@ -114,8 +119,6 @@ const CartPage: React.FC = () => {
             <PriceDetails totalPrice={totalPrice} />
           </div>
         </div>
-      ) : (
-        <div className="mt-10">Loading Products...</div>
       )}
     </>
   );

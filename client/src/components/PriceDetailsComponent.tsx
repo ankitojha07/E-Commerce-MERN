@@ -9,7 +9,14 @@ const PriceDetails: React.FC<PriceDetailsProps> = ({ totalPrice }) => {
   const discount = totalPrice > 300 ? 45.0 : 0;
   const subTotal = totalPrice - discount;
   const tax = subTotal * 0.18;
-  const deliveryCharges = totalPrice > 1000 ? 0.0 : 50;
+  let deliveryCharges;
+  if (totalPrice >= 2000) {
+    deliveryCharges = 0;
+  } else if (totalPrice <= 0) {
+    deliveryCharges = 0;
+  } else {
+    deliveryCharges = 50;
+  }
   const packagingFee = totalPrice > 0 ? 10.0 : 0;
   const finalAmount = subTotal + tax + deliveryCharges + packagingFee;
 

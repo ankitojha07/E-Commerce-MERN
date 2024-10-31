@@ -47,49 +47,4 @@ export const fetchProducts = (req: Request, res: Response) => {
   } catch (error) {}
 };
 
-export const fetchUsersCart = async (req: ProfileRequest, res: Response) => {
-  if (!req.user) {
-    return res.status(401).json({ message: "Unauthorized access" });
-  }
 
-  try {
-    const { id } = req.user;
-    const user = await User.findOne({ _id: id }).exec();
-
-    if (!user) {
-      return res.status(400).json({ message: "User not found", next: "home" });
-    }
-
-    if (!Array.isArray(user.cart) || user.cart.length === 0) {
-      return res.status(404).json({ message: "Cart is empty" });
-    }
-
-    const cartItems = user.cart.map((item) => ({
-      productId: item.productId,
-      quantity: item.quantity,
-    }));
-
-    const productIds = cartItems.map((item) => item.productId);
-    const products = await Product.find({ _id: { $in: productIds } }).exec();
-
-    if (products.length === 0) {
-      return res.status(404).json({ message: "No products found in cart!" });
-    }
-
-    const cartWithDetails = products.map((product) => {
-      const item = cartItems.find((cartItem) =>
-        new mongoose.Types.ObjectId(product.id).equals(product._id)
-      );
-      return {
-        product,
-        quantity: item ? item.quantity : 1,
-      };
-    });
-    // console.log(cartWithDetails);
-
-    return res.status(200).json({ cart: cartWithDetails });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: "Server error" });
-  }
-};

@@ -2,13 +2,9 @@ import { NextFunction, Router } from "express";
 import { Request, Response } from "express";
 
 import "../controllers/cartController";
-import {
-  addProduct,
-  fetchProducts,
-  fetchUsersCart,
-} from "../controllers/productController";
+import { addProduct, fetchProducts } from "../controllers/productController";
 
-import { addToCart } from "../controllers/cartController";
+import { addToCart, fetchUsersCart } from "../controllers/cartController";
 import { authMiddleware } from "../middleware/authMiddleware";
 
 const cartRouter = Router();

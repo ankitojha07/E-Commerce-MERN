@@ -1,4 +1,9 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Document, Schema, Types } from "mongoose";
+
+interface ICartItem {
+  productId: Types.ObjectId; // Ensure this matches the type you're pushing
+  quantity: number;
+}
 
 export interface Iuser extends Document {
   name: string;
@@ -7,10 +12,7 @@ export interface Iuser extends Document {
   otp?: string;
   otpExpiry?: Date;
   isVerified: Boolean;
-  cart: {
-    productId: mongoose.Schema.Types.ObjectId;
-    quantity: number;
-  }[];
+  cart: ICartItem[];
 }
 
 const userSchema: Schema = new mongoose.Schema(
@@ -47,7 +49,7 @@ const userSchema: Schema = new mongoose.Schema(
     cart: [
       {
         productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
-        quantity: { type: Number, required: true, default: 1 },
+        quantity: { type: Number, required: true },
       },
     ],
   },

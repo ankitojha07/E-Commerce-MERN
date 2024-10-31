@@ -39,8 +39,8 @@ const Profile: React.FC = () => {
 
     // Fetch profile data if logged in
     const fetchProfileData = async () => {
+      const token = localStorage.getItem("jwt");
       if (!token) return;
-
       try {
         setLoader(true);
         const response = await axios.get("/profile/userProfile", {

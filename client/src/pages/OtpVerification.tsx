@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -7,14 +7,32 @@ const VerifyOtp: React.FC = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
+    email: "",
     otp: "",
   });
+
+  // Set email from localStorage when component mounts
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+    if (storedEmail) {
+      setFormData((prevData) => ({
+        ...prevData,
+        email: storedEmail,
+      }));
+    } else {
+      // If no email is found in localStorage, redirect to login
+      navigate("/login");
+    }
+  }, [navigate]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value, // Updates the otp field
     });
   };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form Submitted", formData);
@@ -22,7 +40,8 @@ const VerifyOtp: React.FC = () => {
       .post("auth/verify-otp", formData)
       .then((response) => {
         setError(null);
-        navigate("/home");
+        localStorage.setItem("jwt", response.data.token);
+        navigate(`/${response.data.next}`);
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -48,7 +67,7 @@ const VerifyOtp: React.FC = () => {
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="email"
+            htmlFor="otp"
           >
             Enter OTP
           </label>

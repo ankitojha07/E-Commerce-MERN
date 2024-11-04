@@ -19,7 +19,7 @@ const userSchema: Schema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: false,
     },
     email: {
       type: String,
@@ -27,7 +27,7 @@ const userSchema: Schema = new mongoose.Schema(
       unique: true,
     },
     password: {
-      required: true,
+      required: false,
       type: String,
     },
     isVerified: {

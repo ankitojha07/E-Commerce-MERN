@@ -70,6 +70,9 @@ const HomePage: React.FC = () => {
   }
   return (
     <>
+      <div className="banner w-full bg-slate-400">
+        <img src="./images/banner.png" alt="" className="h-96 w-full" />
+      </div>
       {loader ? (
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {products.map((product) => (

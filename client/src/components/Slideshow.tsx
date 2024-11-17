@@ -75,7 +75,7 @@ const Slideshow: React.FC = () => {
 
   return (
     <div
-      className="slideshow-container mx-auto relative overflow-hidden"
+      className="slideshow-container relative overflow-hidden lg:h-96"
       ref={slideRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
@@ -100,31 +100,6 @@ const Slideshow: React.FC = () => {
               className="w-full object-cover"
             />
           </div>
-        ))}
-      </div>
-
-      <button
-        className="prev absolute top-1/2 left-2 transform -translate-y-1/2 text-white font-bold text-lg px-4 py-2 rounded-r hover:bg-opacity-75"
-        onClick={() => handleNext(-1)}
-      >
-        ❮
-      </button>
-      <button
-        className="next absolute top-1/2 right-2 transform -translate-y-1/2 text-white font-bold text-lg px-4 py-2 rounded-l hover:bg-opacity-75"
-        onClick={() => handleNext(1)}
-      >
-        ❯
-      </button>
-
-      <div className="dots-container text-center mt-4">
-        {slides.map((_, index) => (
-          <span
-            key={index}
-            onClick={() => handleDotClick(index + 1)}
-            className={`dot inline-block h-4 w-4 mx-1 rounded-full cursor-pointer ${
-              slideIndex === index + 1 ? "bg-gray-800" : "bg-gray-400"
-            }`}
-          ></span>
         ))}
       </div>
     </div>

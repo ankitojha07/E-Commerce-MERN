@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Slideshow from "../components/Slideshow";
+import { FaCartPlus } from "react-icons/fa";
 
 interface ProductData {
   _id: string;
@@ -70,9 +72,7 @@ const HomePage: React.FC = () => {
   }
   return (
     <>
-      <div className="banner w-full bg-slate-400">
-        <img src="./images/banner.png" alt="" className="h-96 w-full" />
-      </div>
+      <Slideshow />
       {loader ? (
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {products.map((product) => (
@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
               <img
                 src={product.image}
                 alt="product"
-                className="w-52 h-40 border"
+                className="w-full h-64 border"
               />
               <div className="text-start">
                 <h1 className="font-bold text-lg">{product.name}</h1>
@@ -95,12 +95,12 @@ const HomePage: React.FC = () => {
                 <p className="font-semibold">INR {product.price}.00</p>
                 <p className="font-light text-xs">ID: {product._id}</p>
               </div>
-              <button
-                onClick={() => addProductToCart(product._id)}
-                className="bg-[#ccc] px-3 py-2 font-semibold rounded-md"
-              >
-                Add to cart
-              </button>
+              <div className="flex justify-center items-center gap-2 bg-[#ccc] px-3 py-2 font-semibold rounded-md">
+                <FaCartPlus />
+                <button onClick={() => addProductToCart(product._id)}>
+                  Add to cart
+                </button>
+              </div>
             </div>
           ))}
         </div>

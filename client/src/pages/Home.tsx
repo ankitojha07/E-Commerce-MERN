@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Slideshow from "../components/Slideshow";
+import { FaCartPlus } from "react-icons/fa";
 
 interface ProductData {
   _id: string;
@@ -94,12 +95,12 @@ const HomePage: React.FC = () => {
                 <p className="font-semibold">INR {product.price}.00</p>
                 <p className="font-light text-xs">ID: {product._id}</p>
               </div>
-              <button
-                onClick={() => addProductToCart(product._id)}
-                className="bg-[#ccc] px-3 py-2 font-semibold rounded-md"
-              >
-                Add to cart
-              </button>
+              <div className="flex justify-center items-center gap-2 bg-[#ccc] px-3 py-2 font-semibold rounded-md">
+                <FaCartPlus />
+                <button onClick={() => addProductToCart(product._id)}>
+                  Add to cart
+                </button>
+              </div>
             </div>
           ))}
         </div>

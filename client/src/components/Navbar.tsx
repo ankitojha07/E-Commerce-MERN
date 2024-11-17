@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
       </Link>
       <nav className=" flex w-1/3 text-md md:text-lg mt-2 justify-end">
         <ul className="hidden md:flex justify-between gap-4 w-full">
-          <li className=" hover:text-[#fff] flex justify-center items-center gap-2">
+          <li className="hover:text-[#fff] flex justify-center items-center gap-2">
             <FaHome />
             <Link to="/">Home</Link>
           </li>

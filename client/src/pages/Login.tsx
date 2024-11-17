@@ -8,7 +8,6 @@ const Login: React.FC = () => {
 
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,8 +23,8 @@ const Login: React.FC = () => {
       .post("auth/login", formData)
       .then((response) => {
         setError(null);
-        localStorage.setItem("jwt", response.data.token);
-        navigate("/home");
+        localStorage.setItem("email", formData.email);
+        navigate(`/${response.data.next}`);
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -61,31 +60,6 @@ const Login: React.FC = () => {
             id="email"
             name="email"
             value={formData.email}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
-            style={{ backgroundColor: "#aaa" }}
-            required
-          />
-        </div>
-
-        <div className="mb-6">
-          <div className="flex justify-between items-center m-auto">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <Link to="/reset-password" className="text-[#aaa] text-xs">
-              Forget Password?
-            </Link>
-          </div>
-
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
             style={{ backgroundColor: "#aaa" }}

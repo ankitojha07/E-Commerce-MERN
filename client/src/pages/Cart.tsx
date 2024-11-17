@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Product from "../components/ProductComponent";
 import PriceDetails from "../components/PriceDetailsComponent";
+import { Link } from "react-router-dom";
 
 interface ProductData {
   _id: string;
@@ -16,15 +17,29 @@ interface ProductData {
 
 const CartPage: React.FC = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
-  const [error, setError] = useState<string>("");
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [loader, setLoader] = useState(true); // Set loader to true initially
+  const [logInStatus, setLogInStatus] = useState<Boolean>(false);
+  const [logOutStatus, setLogOutStatus] = useState<Boolean>(true);
 
   useEffect(() => {
+    const token = localStorage.getItem("jwt");
+
+    // Check if the user is logged in
+    const checkLogin = () => {
+      if (token) {
+        setLogInStatus(true);
+        setLogOutStatus(false);
+      } else {
+        setLogInStatus(false);
+        setLogOutStatus(true);
+      }
+    };
+    checkLogin();
+
     const fetchProducts = async () => {
       const jwt = localStorage.getItem("jwt");
       if (!jwt) {
-        setError("User not authenticated");
         setLoader(false);
         return;
       }
@@ -37,7 +52,6 @@ const CartPage: React.FC = () => {
         };
         const response = await axios.get("product/cart", config);
         if (!response.data.cart || !Array.isArray(response.data.cart)) {
-          setError("No cart data found");
           setLoader(false);
           return;
         }
@@ -56,7 +70,6 @@ const CartPage: React.FC = () => {
         setProducts(fetchedProducts);
       } catch (err) {
         console.error(err);
-        setError("Failed to fetch products");
       } finally {
         setLoader(false); // Stop the loader after data is fetched
       }
@@ -85,15 +98,24 @@ const CartPage: React.FC = () => {
     );
   };
 
-  if (error) {
-    return <div>{error}</div>;
-  }
-
   return (
     <>
-      {loader ? (
-        <div className="mt-10">Loading Products...</div>
-      ) : (
+      {loader && <div className="mt-10">Loading Products...</div>}
+      {logOutStatus && (
+        <div className="flex flex-col gap-3 justify-center items-center text-xl font-thin h-96">
+          <p>To view your cart, you have to log in first.</p>
+          <div className="flex flex-row gap-3">
+            <Link to="/login" className="bg-gray-400 px-3 py-2 rounded-lg">
+              Login
+            </Link>
+            {/* <Link to="/signup" className="bg-gray-400 px-3 py-2 rounded-lg">
+              SignUp
+            </Link> */}
+          </div>
+        </div>
+      )}
+
+      {logInStatus && (
         <div className="h-full mb-10">
           <h1 className="text-2xl font-bold">Product Cart Page</h1>
           <div className="flex flex-col md:flex-row justify-between mt-3 gap-2">

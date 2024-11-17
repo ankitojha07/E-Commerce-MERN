@@ -71,9 +71,9 @@ const Profile: React.FC = () => {
               <Link to="/login" className="bg-gray-400 px-3 py-2 rounded-lg">
                 Login
               </Link>
-              <Link to="/signup" className="bg-gray-400 px-3 py-2 rounded-lg">
+              {/* <Link to="/signup" className="bg-gray-400 px-3 py-2 rounded-lg">
                 SignUp
-              </Link>
+              </Link> */}
             </div>
           </div>
         )}

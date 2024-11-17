@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +21,13 @@ const Navbar: React.FC = () => {
           <li className=" hover:text-[#fff]">
             <Link to="/">Home</Link>
           </li>
-          <li className=" hover:text-[#fff]">
-            <Link to="/cart">My Cart</Link>
-          </li>
+
           <li className=" hover:text-[#fff]">
             <Link to="/profile">Profile</Link>
+          </li>
+          <li className=" hover:text-[#fff] flex justify-center items-center gap-2">
+            <FaShoppingCart />
+            <Link to="/cart">My Cart</Link>
           </li>
         </ul>
         <button onClick={toggleMenu} className="md:hidden">

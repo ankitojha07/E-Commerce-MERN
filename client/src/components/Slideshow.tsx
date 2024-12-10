@@ -9,18 +9,13 @@ const Slideshow: React.FC = () => {
   const slides = [
     {
       id: 1,
-      imgSrc: "./images/banner1.png",
+      imgSrc: "./images/banner4.png",
       caption: "Caption Text",
     },
     {
       id: 2,
-      imgSrc: "./images/banner2.png",
+      imgSrc: "./images/banner2.jpg",
       caption: "Caption Two",
-    },
-    {
-      id: 3,
-      imgSrc: "./images/banner3.png",
-      caption: "Caption Three",
     },
   ];
 
@@ -71,7 +66,7 @@ const Slideshow: React.FC = () => {
 
   return (
     <div
-      className="slideshow-container relative overflow-hidden rounded-xl"
+      className="slideshow-container relative overflow-hidden rounded-xl "
       ref={slideRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}

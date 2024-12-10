@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Slideshow from "../components/Slideshow";
 import { FaCartPlus } from "react-icons/fa";
 import ProductCategories from "../components/ProductCategories";
+import AllDeals from "../components/Deals/AllDeals";
 
 interface ProductData {
   _id: string;
@@ -109,6 +110,7 @@ const HomePage: React.FC = () => {
       ) : (
         <div className="mt-10">Loading Products ...</div>
       )}
+      <AllDeals />
     </>
   );
 };

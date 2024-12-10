@@ -17,7 +17,7 @@ const ProductCategories = () => {
     { name: "Sports", image: "./images/ProductCategory/sports.jpg" },
   ];
   return (
-    <div className="flex overflow-x-auto space-x-4 mt-4">
+    <div className="flex overflow-x-auto space-x-4 mt-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
       {products.map((product, index) => (
         <div
           key={index}

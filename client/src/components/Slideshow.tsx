@@ -33,10 +33,6 @@ const Slideshow: React.FC = () => {
     });
   };
 
-  const handleDotClick = (index: number) => {
-    setSlideIndex(index);
-  };
-
   // Auto-slide effect
   useEffect(() => {
     const interval = setInterval(() => {
@@ -46,7 +42,7 @@ const Slideshow: React.FC = () => {
     return () => {
       clearInterval(interval); // Clear interval on component unmount
     };
-  }, [slideIndex]);
+  });
 
   // Drag functionality
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -75,7 +71,7 @@ const Slideshow: React.FC = () => {
 
   return (
     <div
-      className="slideshow-container relative overflow-hidden rounded-xl "
+      className="slideshow-container relative overflow-hidden rounded-xl max-h-96"
       ref={slideRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}

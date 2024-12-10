@@ -66,7 +66,7 @@ const Slideshow: React.FC = () => {
 
   return (
     <div
-      className="slideshow-container relative overflow-hidden rounded-xl "
+      className="slideshow-container relative overflow-hidden rounded-xl max-h-96"
       ref={slideRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}

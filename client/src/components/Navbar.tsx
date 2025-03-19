@@ -13,9 +13,9 @@ const Navbar: React.FC = () => {
     <div className="flex flex-row justify-between py-2 flex-wrap w-full">
       <Link
         to="/"
-        className="w-2/3 text-xl hover:font-extrabold font-bold justify-center italic m-auto"
+        className="w-2/3 text-xl hover:font-extrabold font-bold justify-center  m-auto"
       >
-        Cart APP
+        Shopping Cart
       </Link>
       <nav className=" flex w-1/3 text-md md:text-lg mt-2 justify-end">
         <ul className="hidden md:flex justify-between gap-4 w-full">
